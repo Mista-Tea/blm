@@ -23,7 +23,7 @@ local function PrintInit()
 	blm.util.Print()
 end
 
-/**-------------------------------------------------------------------------------**/
+--[[--------------------------------------------------------------------------------]]
 function blm.Initialize( isReloading )
 	if ( blm.IsInitialized and !isReloading ) then return end
 
