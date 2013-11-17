@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+				blm hitmarkers - player
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -10,9 +12,9 @@ blm.util.PrintT( "Running server/player.lua" )
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
  
-local hitmarkers = blm.hitmarkers
-	  hitmarkers.player = hitmarkers.player or {}
-	  hitmarkers.hooks  = hitmarkers.hooks  or {}
+local 	hitmarkers	  = blm.hitmarkers
+	hitmarkers.player = hitmarkers.player or {}
+	hitmarkers.hooks  = hitmarkers.hooks  or {}
 
 /**--------------------------------------------------------------------------------*
  *---------------------------- Localized Globals ----------------------------------*
@@ -38,8 +40,8 @@ function hitmarkers.hooks.PlayerSpawn( ply )
 	timer.Create( "Health_"..SID, 0.5, 0, function()
 		if ( !ply or !ply:IsValid() ) then timer.Destroy( "Health_"..SID ) return; end
 		
-		if 	   ( ply.blmMaxHealth < ply:Health() ) then ply.blmMaxHealth = ply:Health()
-		elseif ( ply.blmMaxHealth <= 0 ) 		  then ply.blmMaxHealth = 0.1 			end
+		if 	( ply.blmMaxHealth < ply:Health() ) then ply.blmMaxHealth = ply:Health()
+		elseif 	( ply.blmMaxHealth <= 0 )	    then ply.blmMaxHealth = 0.1 end
 				
 		ply:SetNWInt( "MaxHealth", ply.blmMaxHealth )
 	end )

@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+				blm ranks - cl_ranks
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -10,9 +12,9 @@ blm.util.PrintT( "Running client/cl_ranks.lua" )
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
 
-local ranks 	    = blm.ranks
-	  ranks.players = ranks.players or {}
-	  ranks.hooks   = ranks.hooks   or {}
+local 	ranks		= blm.ranks
+	ranks.players 	= ranks.players	or {}
+	ranks.hooks   	= ranks.hooks	or {}
 	  
 /**--------------------------------------------------------------------------------*
  *------------------------------ Local Variables ----------------------------------*
@@ -32,12 +34,12 @@ local BAR_Y = 0
  *---------------------------- Localized Globals ----------------------------------*
  *-------------------------------------------------------------------------------**/
  
-local cam 		= cam
+local cam 	= cam
 local Start3D2D = cam.Start3D2D
 local End3D2D   = cam.End3D2D
 
-local draw 				 = draw
-local RoundedBox 		 = draw.RoundedBox
+local draw		 = draw
+local RoundedBox	 = draw.RoundedBox
 local SimpleTextOutlined = draw.SimpleTextOutlined
 
 local math  = math
@@ -47,9 +49,9 @@ local Clamp = math.Clamp
 local Color  = Color
 local Vector = Vector
 
-local IsValid = IsValid
-local hook = hook
-local net = net
+local IsValid	= IsValid
+local hook	= hook
+local net	= net
 
 /**--------------------------------------------------------------------------------*
  *------------------------------- BLM FUNCTIONS -----------------------------------*
@@ -67,7 +69,7 @@ net.Receive( "BLM_Ranks_SyncRanks", function( len )
 		ply.blm.rank = rank
 	end
 end )
---[[--------------------------------------------------------------------------------]] 
+--[[------------------------------------------------------------------------------]] 
 net.Receive( "BLM_Ranks_PlayerRank", function( len )
 	local ply   = net.ReadEntity()
 	local level = net.ReadUInt( 8 )
@@ -77,7 +79,7 @@ net.Receive( "BLM_Ranks_PlayerRank", function( len )
 	ply.blm.rank = { Level = level, Class = class }
 	ranks.players[ ply:SteamID() ] = { Level = level, Class = class }
 end )
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 
 surface.CreateFont( "BLM_Class", { font = "coolvetica", size = 80, weight = 500 } )
 surface.CreateFont( "BLM_Level", { font = "coolvetica", size = 120, weight = 500 } )
@@ -107,8 +109,9 @@ function ranks.hooks.PostPlayerDraw( ply )
 	End3D2D()
 end
 hook.Add( "PostPlayerDraw", "blm_ranks_drawhitmarkers", ranks.hooks.PostPlayerDraw )
-
+--[[------------------------------------------------------------------------------]]
 function ranks.hooks.HudPaint()
 	
 end
+--[[------------------------------------------------------------------------------]]
 hook.Add( "HUDPaint", "blm_ranks_drawexp", ranks.hooks.HUDPaint )

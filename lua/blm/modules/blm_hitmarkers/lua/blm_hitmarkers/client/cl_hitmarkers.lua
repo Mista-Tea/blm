@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+			blm hitmarkers - cl_hitmarkers
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -26,13 +28,13 @@ local LeftOrRight = true
  *---------------------------- Localized Globals ----------------------------------*
  *-------------------------------------------------------------------------------**/
  
-local cam 		= cam
-local Start3D2D = cam.Start3D2D
-local End3D2D   = cam.End3D2D
+local cam	= cam
+local Start3D2D	= cam.Start3D2D
+local End3D2D	= cam.End3D2D
 
-local draw 				 = draw
-local RoundedBox 		 = draw.RoundedBox
-local SimpleTextOutlined = draw.SimpleTextOutlined
+local draw			= draw
+local RoundedBox		= draw.RoundedBox
+local SimpleTextOutlined 	= draw.SimpleTextOutlined
  
 local surface    = surface
 local CreateFont = surface.CreateFont
@@ -44,11 +46,11 @@ local Clamp = math.Clamp
 local Color  = Color
 local Vector = Vector
 
-local timer	  = timer
-local IsValid = IsValid
-local hook 	  = hook
-local SysTime = SysTime
-local net	  = net
+local timer	= timer
+local IsValid 	= IsValid
+local hook	= hook
+local SysTime	= SysTime
+local net	= net
 
 /**--------------------------------------------------------------------------------*
  *------------------------------- BLM FUNCTIONS -----------------------------------*
@@ -103,7 +105,7 @@ net.Receive( "BL2Damage", function( len )
 		end
 	--end
 end )
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 
 CreateFont( "DamageFontCrit", {font = "Trebuchet24", size = 40, weight = 800 } )
 CreateFont( "DamageFont",  	  {font = "Trebuchet24", size = 36, weight = 700 } )

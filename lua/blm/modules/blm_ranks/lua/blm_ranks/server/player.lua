@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+				blm ranks - player
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -10,12 +12,12 @@ blm.util.PrintT( "Running server/player.lua" )
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
 
-local ranks 	   = blm.ranks
-	  ranks.player = ranks.player or {}
-	  ranks.hooks  = ranks.hooks  or {}
+local 	ranks		= blm.ranks
+	ranks.player 	= ranks.player or {}
+	ranks.hooks  	= ranks.hooks  or {}
 		
-	  ranks.default = { Level = 1, Class = "Newcomer" }
-	  ranks.players = ranks.players or {}
+	ranks.default 	= { Level = 1, Class = "Newcomer" }
+	ranks.players 	= ranks.players or {}
 
 /**--------------------------------------------------------------------------------*
  *---------------------------- Localized Globals ----------------------------------*
@@ -54,21 +56,21 @@ function ranks.hooks.PlayerInitialSpawn( ply )
 	end )
 end
 hook.Add( "PlayerInitialSpawn", "blm_ranks_setupplayer", ranks.hooks.PlayerInitialSpawn )
---[[--------------------------------------------------------------------------------]] 
+--[[------------------------------------------------------------------------------]] 
 function ranks.player.Setup( ply, tbl )
 	ply.blm = ply.blm or {}
 	ply.blm.pdata = tbl
 	
 	ranks.players[ ply:SteamID() ] = { Level = tbl.Level, Class = tbl.Class }
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 function ranks.hooks.PlayerDisconnected( ply )
 	if ( ranks.players[ ply:SteamID() ] ) then 
 		ranks.players[ ply:SteamID() ] = nil
 	end
 end
 hook.Add( "PlayerDisconnected", "blm_ranks_removeplayer", ranks.hooks.PlayerDisconnected )
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 
 util.AddNetworkString( "BLM_Ranks_SyncRanks" )
 	

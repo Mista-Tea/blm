@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+			blm hitmarkers - hitmarkers
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -10,10 +12,10 @@ blm.util.PrintT( "Running server/hitmarkers.lua" )
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
  
-local hitmarkers  		 = blm.hitmarkers
-	  hitmarkers.entity  = hitmarkers.entity  or {}
-	  hitmarkers.weapons = hitmarkers.weapons or {}
-	  hitmarkers.hooks   = hitmarkers.hooks   or {}
+local 	hitmarkers	   = blm.hitmarkers
+	hitmarkers.entity  = hitmarkers.entity  or {}
+	hitmarkers.weapons = hitmarkers.weapons or {}
+	hitmarkers.hooks   = hitmarkers.hooks   or {}
 
 /**--------------------------------------------------------------------------------*
  *------------------------------ Local Variables ----------------------------------*
@@ -37,15 +39,15 @@ local util = util
 function hitmarkers.RegisterWeapon( WEAPON )
 	hitmarkers.weapons[ WEAPON.Name ] = WEAPON
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 util.AddNetworkString( "BL2Damage" )
 
 function hitmarkers.hooks.EntityTakeDamage( ent, damageInfo ) 
 	if ( !IsValid( ent ) or !ent:IsPlayer() ) then return; end
 	
-	local dmg 	  = damageInfo:GetDamage()
-	local inf 	  = damageInfo:GetInflictor()
-	local dmgEnum = damageInfo:GetDamageType()
+	local dmg 	= damageInfo:GetDamage()
+	local inf 	= damageInfo:GetInflictor()
+	local dmgEnum 	= damageInfo:GetDamageType()
 	
 	if ( IsEntity( inf ) ) then
 		if ( inf:IsPlayer() ) then

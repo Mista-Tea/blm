@@ -1,5 +1,5 @@
 --[[--------------------------------------------------------------------------------
-				    util
+				   blm - util
 ----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
@@ -26,9 +26,9 @@ blm.util.SHARED    = 0x10
  *-------------------------------------------------------------------------------**/
  
 local AddFile = {}
-AddFile[ blm.util.INCLUDE ]   	= include
-AddFile[ blm.util.TO_CLIENT ] 	= AddCSLuaFile
-AddFile[ blm.util.SHARED ] 	= function( filePath ) include( filePath ) AddCSLuaFile( filePath ) end
+AddFile[ blm.util.INCLUDE ]	= include
+AddFile[ blm.util.TO_CLIENT ]	= AddCSLuaFile
+AddFile[ blm.util.SHARED ]	= function( filePath ) include( filePath ) AddCSLuaFile( filePath ) end
 
 /**--------------------------------------------------------------------------------*
  *------------------------------ Local Variables ----------------------------------*
@@ -62,11 +62,11 @@ function blm.util.PrintT( text, col )
 	MsgC( GRAY, " | " ) 
 	MsgC( col or GRAY, "\t" .. (text or "") .. "\n" )
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 function blm.util.PrintError( location, err )
 	MsgC( Color(255,0,0), " | ERROR -- BLM." .. location .. ": " .. err .. "\n" )
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 function blm.util.IncludeDir( dir, flag )
 
 	local files, folders = Find( dir .. "/*", "LUA", "nameasc" ) 
@@ -83,7 +83,7 @@ function blm.util.IncludeDir( dir, flag )
 		blm.util.IncludeDir( dir .. "/" .. FOLDER, flag )
 	end
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 function blm.util.LoadModules( dir, flag )
 	local _, MODULES = Find( dir .. "/*", "LUA", "nameasc" )
 	
@@ -97,16 +97,16 @@ function blm.util.LoadModules( dir, flag )
 		blm.util.initializers[ blm.util.CurrentModule ]()
 	end
 end
---[[--------------------------------------------------------------------------------]]
+--[[------------------------------------------------------------------------------]]
 function blm.util.AddModuleInitializer( name, func )
 	blm.util.initializers[ name ] = func
 	blm.util.CurrentModule = name
 end
---[[ ---------------------------------------------------------------------------------
+--[[ -------------------------------------------------------------------------------
 /**
  *	If supplied the value from 'debug.getinfo(1).short_src', this will return the relative
  *	 directory that the calling file resides in, ignoring the file's name, 
- *	 it's current folder, and the first 3 folders.
+ *	 its current folder, and the first 3 folders.
  *
  *	For example, if given "addons/blm/lua/blm/modules/blm_hitmarkers/lua/autorun/init.lua", 
  *	 it will return	-->	"blm/modules/blm_hitmarkers/lua/"
@@ -115,7 +115,7 @@ end
  *	 These modules can by copied directly out of /modules/ and 
  *	 placed into garrysmod/addons/ and they will still run!
  **/
- -------------------------------------------------------------------------------- --]]
+ ------------------------------------------------------------------------------ --]]
 function blm.util.GetRelativePath( debugSource )
 	local relativePath = ""
 	local directories = Explode( "/", debugSource )

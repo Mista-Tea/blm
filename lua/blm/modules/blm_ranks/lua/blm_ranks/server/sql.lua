@@ -1,4 +1,6 @@
-
+--[[--------------------------------------------------------------------------------
+				blm ranks - sql
+----------------------------------------------------------------------------------]]
 
 --[[	Changelog -- Added July 27th, 2013
 
@@ -10,11 +12,11 @@ blm.util.PrintT( "Running server/sql.lua" )
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
 
-local ranks     = blm.ranks or {}
-	  ranks.sql = ranks.sql or {}
+local 	ranks	  = blm.ranks or {}
+	ranks.sql = ranks.sql or {}
 
 /**--------------------------------------------------------------------------------*
- *	------------------------------------------- NAMESPACE VARIABLES -------------------------------------------  * 
+ *--------------------------- Namespace Variables ---------------------------------*
  *-------------------------------------------------------------------------------**/
 
 ranks.sql.IsEstablished = ranks.sql.IsEstablished or false
@@ -72,8 +74,8 @@ function ranks.sql.SetupTable( name, isReloading )
 		hook.Call( "BL2M.DatabaseInitialized", GAMEMODE )
 	end
 end
---ranks.sql.SetupTable( "blm", ranks.sql.IsEstablished )
---[[--------------------------------------------------------------------------------]]
+ranks.sql.SetupTable( "blm", ranks.sql.IsEstablished )
+--[[------------------------------------------------------------------------------]]
 function ranks.sql.Query( QUERY )
 	local result = Query( QUERY )
 	
