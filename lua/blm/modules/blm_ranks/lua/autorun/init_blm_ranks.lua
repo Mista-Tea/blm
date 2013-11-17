@@ -8,17 +8,17 @@
 
 ]]
 
-/**	-----------------------------------------------------------------------------------------------------------  *
+/**--------------------------------------------------------------------------------*
  *	------------------------------------------- NAMESPACE TABLES ----------------------------------------------  *
- *	----------------------------------------------------------------------------------------------------------- **/
+ *-------------------------------------------------------------------------------**/
 
 blm 	  				= blm		 		 	  or {}
 blm.ranks 				= blm.ranks 			  or {}
 blm.ranks.IsInitialized = blm.ranks.IsInitialized or false
 
-/**	-----------------------------------------------------------------------------------------------------------  *
+/**--------------------------------------------------------------------------------*
  *	------------------------------------------- BLM - LOAD MODULE ---------------------------------------------  *
- *	----------------------------------------------------------------------------------------------------------- **/
+ *-------------------------------------------------------------------------------**/
 /**
  *	If supplied the value from 'debug.getinfo(1).short_src', this will return the relative
  *	 directory that the calling file resides in, ignoring the file's name, it's current folder, and the first 3 folders.
@@ -43,15 +43,15 @@ function blm.GetRelativePath( debugSource )
 	
 	return relativePath
 end
-/**-------------------------------------------------------------------------------------------------------------**/
+--[[--------------------------------------------------------------------------------]]
 local fullPath     = debug.getinfo(1).short_src
 local modulePath   = blm.GetRelativePath( fullPath )	-- Retrieve the module's current relative path, such as "blm/modules/blm_hitmarkers/lua/"
 local relativePath = modulePath .. "blm_ranks/"
-/**-------------------------------------------------------------------------------------------------------------**/
+--[[--------------------------------------------------------------------------------]]
 function blm.ranks.Initialize( isReloading )
 	if ( blm.ranks.IsInitialized and !isReloading ) then return; end
 	
-	if ( blm and blm.util ) then blm.util.PrintT( "Loading nundled module -- Borderlands Mod -- Player Ranks" ) 
+	if ( blm and blm.util ) then blm.util.PrintT( "Loading bundled module -- Borderlands Mod -- Player Ranks" ) 
 	else							   print( " |\tLoading standalone module -- Borderlands Mod -- Player Ranks" ) end
 	
 	if ( SERVER ) then
