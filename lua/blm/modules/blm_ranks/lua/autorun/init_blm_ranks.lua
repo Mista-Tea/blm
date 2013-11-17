@@ -76,6 +76,6 @@ function blm.ranks.Initialize( isReloading )
 	
 	blm.ranks.IsInitialized = true
 end
-hook.Add( "Initialize", "BLM_Ranks_Initialize", blm.ranks.Initialize )
+--hook.Add( "Initialize", "BLM_Ranks_Initialize", blm.ranks.Initialize )
 
-if ( blm.util ) then blm.util.AddModuleInitializer( "ranks", blm.ranks.Initialize ) end
+--if ( blm.util ) then blm.util.AddModuleInitializer( "ranks", blm.ranks.Initialize ) end
