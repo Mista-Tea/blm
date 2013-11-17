@@ -17,18 +17,18 @@ blm.util.initializers = blm.util.initializers or {}
  *--------------------------- Namespace Variables ---------------------------------*
  *-------------------------------------------------------------------------------**/
 
-blm.util.INCLUDE   = 0x00
-blm.util.TO_CLIENT = 0x01
-blm.util.SHARED    = 0x10
+blm.util.INCLUDE = 0x00
+blm.util.CLIENT  = 0x01
+blm.util.SHARED  = 0x10
  
 /**--------------------------------------------------------------------------------*
  *------------------------------- Local Tables ------------------------------------*
  *-------------------------------------------------------------------------------**/
  
 local AddFile = {}
-AddFile[ blm.util.INCLUDE ]	= include
-AddFile[ blm.util.TO_CLIENT ]	= AddCSLuaFile
-AddFile[ blm.util.SHARED ]	= function( filePath ) include( filePath ) AddCSLuaFile( filePath ) end
+AddFile[ blm.util.INCLUDE ] = include
+AddFile[ blm.util.CLIENT ]  = AddCSLuaFile
+AddFile[ blm.util.SHARED ]  = function( filePath ) include( filePath ) AddCSLuaFile( filePath ) end
 
 /**--------------------------------------------------------------------------------*
  *------------------------------ Local Variables ----------------------------------*
@@ -53,20 +53,27 @@ local Explode = string.Explode
 /**--------------------------------------------------------------------------------*
  *------------------------------- BLM FUNCTIONS -----------------------------------*
  *-------------------------------------------------------------------------------**/
+ 
 function blm.util.Print( text, col )
 	MsgC( GRAY, " | " ) 
 	MsgC( col or GRAY, (text or "") .. "\n" )
 end
 
+--[[------------------------------------------------------------------------------]]
+
 function blm.util.PrintT( text, col )
 	MsgC( GRAY, " | " ) 
 	MsgC( col or GRAY, "\t" .. (text or "") .. "\n" )
 end
+
 --[[------------------------------------------------------------------------------]]
+
 function blm.util.PrintError( location, err )
 	MsgC( Color(255,0,0), " | ERROR -- BLM." .. location .. ": " .. err .. "\n" )
 end
+
 --[[------------------------------------------------------------------------------]]
+
 function blm.util.IncludeDir( dir, flag )
 
 	local files, folders = Find( dir .. "/*", "LUA", "nameasc" ) 
@@ -83,7 +90,9 @@ function blm.util.IncludeDir( dir, flag )
 		blm.util.IncludeDir( dir .. "/" .. FOLDER, flag )
 	end
 end
+
 --[[------------------------------------------------------------------------------]]
+
 function blm.util.LoadModules( dir, flag )
 	local _, MODULES = Find( dir .. "/*", "LUA", "nameasc" )
 	
@@ -97,11 +106,14 @@ function blm.util.LoadModules( dir, flag )
 		blm.util.initializers[ blm.util.CurrentModule ]()
 	end
 end
+
 --[[------------------------------------------------------------------------------]]
+
 function blm.util.AddModuleInitializer( name, func )
 	blm.util.initializers[ name ] = func
 	blm.util.CurrentModule = name
 end
+
 --[[ -------------------------------------------------------------------------------
 /**
  *	If supplied the value from 'debug.getinfo(1).short_src', this will return the relative

@@ -10,9 +10,9 @@
  *----------------------------- Namespace Tables ----------------------------------*
  *-------------------------------------------------------------------------------**/
 
-blm 			= blm 			  or {}
-blm.ranks 		= blm.ranks 		  or {}
-blm.ranks.IsInitialized = blm.ranks.IsInitialized or false
+blm			= blm				or {}
+blm.ranks		= blm.ranks			or {}
+blm.ranks.IsInitialized = blm.ranks.IsInitialized	or false
 
 /**--------------------------------------------------------------------------------*
  *------------------------------- BLM FUNCTIONS -----------------------------------*
@@ -65,7 +65,7 @@ function blm.ranks.Initialize( isReloading )
 			
 		blm.util.IncludeDir( relativePath .. "server",  blm.util.INCLUDE )
 		blm.util.IncludeDir( relativePath .. "shared",  blm.util.SHARED )
-		blm.util.IncludeDir( relativePath .. "client",  blm.util.TO_CLIENT )
+		blm.util.IncludeDir( relativePath .. "client",  blm.util.CLIENT )
 	end
 	
 	if ( CLIENT ) then

@@ -65,7 +65,7 @@ function blm.hitmarkers.Initialize( isReloading )
 		
 		blm.util.IncludeDir( relativePath .. "server",  blm.util.INCLUDE )
 		blm.util.IncludeDir( relativePath .. "shared",  blm.util.SHARED )
-		blm.util.IncludeDir( relativePath .. "client",  blm.util.TO_CLIENT )
+		blm.util.IncludeDir( relativePath .. "client",  blm.util.CLIENT )
 		blm.util.IncludeDir( relativePath .. "weapons", blm.util.INCLUDE )
 	end
 	

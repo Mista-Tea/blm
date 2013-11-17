@@ -18,7 +18,7 @@ blm.util.initializers = blm.util.initializers or {}
  *-------------------------------------------------------------------------------**/
 
 blm.util.INCLUDE   = 0x00
-blm.util.TO_CLIENT = 0x01
+blm.util.CLIENT = 0x01
 blm.util.SHARED    = 0x10
  
 /**--------------------------------------------------------------------------------*
@@ -27,7 +27,7 @@ blm.util.SHARED    = 0x10
  
 local AddFile = {}
 AddFile[ blm.util.INCLUDE ]	= include
-AddFile[ blm.util.TO_CLIENT ]	= AddCSLuaFile
+AddFile[ blm.util.CLIENT ]	= AddCSLuaFile
 AddFile[ blm.util.SHARED ]	= function( filePath ) include( filePath ) AddCSLuaFile( filePath ) end
 
 /**--------------------------------------------------------------------------------*
